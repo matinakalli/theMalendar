@@ -1,0 +1,17 @@
+@import '../../../variables.scss';
+
+h1, button {
+  color: $purple-blue-dark;
+}
+
+.mat-dialog-actions{
+  float: right;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-content {
+  padding: 20px;
+}

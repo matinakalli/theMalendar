@@ -1,0 +1,23 @@
+@import "../../../../variables.scss";
+
+section {
+    padding: 10px 0;
+}
+
+#footer {
+    background: $purple-blue-transparent !important;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    a {
+      color: $default-white;
+      text-decoration: none !important;
+      background-color: transparent;
+      -webkit-text-decoration-skip: objects;
+    }
+
+    p{
+      margin: 0;
+    }
+}

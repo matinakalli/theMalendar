@@ -1,0 +1,58 @@
+@import "../../../../variables.scss";
+
+
+// Nav Bar
+
+  .navbar-expand-lg {
+    background-color: $purple-blue-transparent;
+
+    a{
+      color: $light-grey;
+    }
+
+    .active>.nav-link, .nav-link:hover, .nav-link:focus{
+      color: $light-grey;
+    }
+
+    .navbar-collapse{
+      // display: table-row-group !important;
+    }
+
+    .navbar-nav{
+      position: absolute;
+      right: 20px;
+
+      .dropdown-menu {
+        background-color: $purple-blue-transparent;
+        margin: 0;
+
+        .dropdown-item.active, .dropdown-item:active, .dropdown-item:focus, .dropdown-item:hover{
+          background: transparent !important;
+          color: $light-grey;
+        }
+
+
+
+      }
+    }
+    .btn-group>.btn:first-child {
+      margin-left: auto !important;
+    }
+
+  }
+
+
+
+// Mobile css
+
+@media all and (max-width: 992px){
+
+  .navbar-expand-lg {
+    background-color: $purple-blue-transparent;
+  }
+
+  .material-icons{
+    color: $light-grey;
+  }
+}
+

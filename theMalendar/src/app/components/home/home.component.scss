@@ -1,0 +1,28 @@
+@import "../../../variables.scss";
+
+
+#homepage {
+  padding-top: 150px;
+  height: 1000px;
+  width: 100%;
+  background: url("../../../assets/images/home-bg.jpg") no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  .home-message {
+    text-align: center;
+    padding: 20px;
+    background-color: $purple-blue-transparent-extra;
+    -webkit-box-shadow: 0px -3px 50px 30px $purple-blue-transparent-extra;
+    -moz-box-shadow: 0px -3px 50px 30px $purple-blue-transparent-extra;
+    box-shadow: 0px -3px 50px 30px $purple-blue-transparent-extra;
+    color: $light-grey;
+
+    h2 {
+      line-height: 46px;
+    }
+  }
+}

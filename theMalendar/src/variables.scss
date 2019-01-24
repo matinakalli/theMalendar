@@ -1,0 +1,44 @@
+
+// Fonts
+$font-primary: 'Montserrat', sans-serif;
+
+/************* Colors *****************/
+
+// Main Color
+$purple-blue: #35037c;
+$purple-blue-light: #b388ff;
+
+
+$default-white: #ffffff;
+$border-color: #e6ecf5;
+$light-grey: #f0f0f0;
+$wine-red: #800000;
+$correct: #5B985F;
+
+//Darkers
+$purple-blue-dark: #1c043d;
+
+// Transparents
+$purple-blue-transparent: rgba(53, 3, 124, 0.7);
+$purple-blue-transparent-extra: rgba(53, 3, 124, 0.5);
+
+$purple-blue-light-transparent: rgba(248, 249, 250, 0.65);
+$wine-red-transparent: rgba(128, 0, 0, 0.62);
+$correct-transparent: rgba(91, 152, 95, 0.644);
+$light-grey-transparent: rgba(240, 240, 240, 0.8);
+
+/*********************************/
+
+// Menu Settings
+$header-height: 65px;
+
+// Offsets
+$collapsed-size: 70px;
+$offscreen-size: 280px;
+
+// Breakpoints
+$breakpoint-xl : 1440px;
+$breakpoint-lg : 1200px;
+$breakpoint-md : 992px;
+$breakpoint-sm : 768px;
+$breakpoint-xs : 0;
