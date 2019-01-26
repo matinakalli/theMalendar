@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'TheMalendar'),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+        *   JWT Provider
+        */
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
     ],
 
     /*

@@ -1,0 +1,11 @@
+@import "../../../../variables.scss";
+
+.calendar-container {
+  .row {
+    background: $purple-blue-light-transparent;
+
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+}

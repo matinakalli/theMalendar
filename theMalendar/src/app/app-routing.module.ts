@@ -1,16 +1,11 @@
-import { HomeComponent } from './components/home/home.component';
-
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './modules/home/home/home.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent
-  },
-  {
-    path: 'calendar',
-    loadChildren: './modules/calendar/calendar.module#CalendarModule'
   }
 ];
 

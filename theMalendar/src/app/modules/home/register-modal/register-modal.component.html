@@ -1,0 +1,82 @@
+<h1>Register</h1>
+<form #RForm="ngForm" (ngSubmit)="onRegister()">
+  <div mat-dialog-content>
+    <div class="alert alert-danger" [hidden]="!error.email">
+      {{ error["email"] }}
+    </div>
+    <div class="alert alert-danger" [hidden]="!error.password">
+      {{ error["password"] }}
+    </div>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="nameFormControl"
+        [(ngModel)]="registerForm.name"
+        placeholder="Name"
+        required
+      />
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="emailFormControl"
+        [(ngModel)]="registerForm.email"
+        placeholder="Email"
+        [errorStateMatcher]="matcher"
+        required
+      />
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        [formControl]="passwordFormControl"
+        [(ngModel)]="registerForm.password"
+        placeholder="Password"
+        required
+      />
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="password"
+        [formControl]="passwordConfirmationFormControl"
+        [(ngModel)]="registerForm.password_confirmation"
+        placeholder="Confirm Password"
+        required
+      />
+      <mat-error *ngIf="passwordConfirmationFormControl.hasError('required')">
+        Password confirmation is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="btn-close" (click)="onNoClick()">Cancel</button>
+    <button
+      mat-button
+      type="submit"
+      class="btn-submit"
+      [disabled]="!RForm.valid"
+    >
+      Submit
+    </button>
+  </div>
+</form>

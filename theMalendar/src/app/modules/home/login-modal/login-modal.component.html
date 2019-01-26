@@ -1,0 +1,44 @@
+<h1>Login</h1>
+<form #LForm="ngForm" (ngSubmit)="onLogin()">
+  <div mat-dialog-content >
+    <mat-form-field>
+      <input
+        matInput
+        [formControl]="emailFormControl"
+        [(ngModel)] = "loginForm.email"
+        placeholder="Email"
+        [errorStateMatcher]="matcher"
+        required
+      />
+      <mat-error
+        *ngIf="
+          emailFormControl.hasError('email') &&
+          !emailFormControl.hasError('required')
+        "
+      >
+        Please enter a valid email address
+      </mat-error>
+      <mat-error *ngIf="emailFormControl.hasError('required')">
+        Email is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+          matInput
+          type = "password"
+          [formControl]="passwordFormControl"
+          [(ngModel)] = "loginForm.password"
+          placeholder="Password"
+          required
+        />
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+      </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="btn-close" (click)="onNoClick()">Cancel</button>
+    <button mat-button type="submit" class="btn-submit"
+    [disabled]="!LForm.valid">Login</button>
+  </div>
+</form>

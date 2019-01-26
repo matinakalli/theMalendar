@@ -1,0 +1,23 @@
+<div class="calendar-container">
+    <form #ChooseMonthForm="ngForm" (ngSubmit)="onChoseMonth()">
+      <div class="row">
+        <div class="col-md-3">
+          <mat-form-field>
+            <mat-select placeholder="Select Month" [(ngModel)] = "chosenMonth" name="chosenMonth">
+              <mat-option *ngFor="let month of months" [value]="month">
+                {{ month }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="form-group col-md-12">
+            <button type="submit" class="btn btn-submit">See Events</button>
+          </div>
+        </div>
+        <div class="col-md-9" *ngIf = "days">
+            <div *ngFor="let day of days">
+              <p>{{ day }}</p>
+            </div>
+          </div>
+      </div>
+    </form>
+  </div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
+use App\User;
 
 class AuthController extends Controller
 {
@@ -14,7 +16,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        // ignore the login anf signup because we dont have a token in those 2 cases
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -28,10 +31,18 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Email or Password does not exist!'], 401);
         }
 
         return $this->respondWithToken($token);
+    }
+
+    // Register a new user and login the user
+    public function register(RegisterRequest $request)
+    {
+        $user = User::create($request->all());
+
+        return $this->login($request);
     }
 
     /**
@@ -79,8 +90,17 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()->name    //gives also the user name
+            'expires_in' => $this->guard()->factory()->getTTL() * 60
         ]);
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\Guard
+     */
+    public function guard()
+    {
+        return Auth::guard();
     }
 }

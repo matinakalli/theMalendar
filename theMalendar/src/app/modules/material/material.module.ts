@@ -8,9 +8,10 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSnackBarModule,
+  MatSelectModule,
+  MatOptionModule
 } from '@angular/material';
-
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   imports: [
@@ -20,8 +21,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    BrowserAnimationsModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   exports: [
     MatButtonModule,
@@ -30,8 +33,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatDialogModule,
     MatFormFieldModule,
-    BrowserAnimationsModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatSelectModule,
+    MatOptionModule
   ],
   providers: [
     MatDialogModule
