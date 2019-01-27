@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
@@ -27,10 +28,15 @@ export class RegisterModalComponent {
     password: null,
     password_confirmation: null
   };
-  public error = [];
+  public error = {
+    email: null,
+    password: null
+  };
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<RegisterModalComponent>,
-    private usersService: UsersService, public messageBar: MatSnackBar, private tokenService: TokenService, private router: Router) {}
+    private usersService: UsersService, public messageBar: MatSnackBar,
+    private tokenService: TokenService, private router: Router,
+    private authService: AuthService) {}
 
   public emailFormControl = new FormControl('', [
     Validators.required,
@@ -66,8 +72,7 @@ export class RegisterModalComponent {
   // Handle the data of the response when successfull
   handleResponse(data) {
     this.tokenService.storeToken(data.access_token);   // store the token
-    this.router.navigateByUrl('/calendar');             // go to calendar page
-
+    this.authService.changeAuthStatus(true);
   }
 
   handleError(error) {

@@ -1,7 +1,6 @@
 <?php
 
-titlespace App;
-
+namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
@@ -20,17 +19,9 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'attendees', 'place', 'time', 'description'
+        'title', 'attendees', 'place', 'date', 'time', 'description', 'user_id'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password'
-    ];
 
     public function store(Request $request)
     {
@@ -40,8 +31,10 @@ class Event extends Model
         $event->title = $request->title;
         $event->attendees = $request->attendees;
         $event->place = $request->place;
+        $event->date = $request->date;
         $event->time = $request->time;
         $event->description = $request->description;
+        $event->user_id = $request->user_id;
 
         $event->save();
     }

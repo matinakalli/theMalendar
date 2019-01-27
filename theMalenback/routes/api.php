@@ -1,9 +1,5 @@
 <?php
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::group([
 
     'middleware' => 'api'
@@ -14,6 +10,10 @@ Route::group([
     Route::post('register', 'AuthController@register');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
+    Route::get('get-user', 'AuthController@getUser');
+
+    // Events routes
+    Route::post('create-event', 'EventController@create');
+    Route::get('date-events/{date}', 'EventController@getDateEvents');
 
 });

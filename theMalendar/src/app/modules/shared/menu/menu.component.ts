@@ -22,12 +22,14 @@ export class MenuComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginModalComponent, {
       width: '350px',
     });
+
   }
 
   registerModal(): void {
     const dialogRef = this.dialog.open(RegisterModalComponent, {
       width: '450px',
     });
+
   }
 
   // Logout user: delete token and change status of user

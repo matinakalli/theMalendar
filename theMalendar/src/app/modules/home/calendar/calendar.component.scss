@@ -1,11 +1,49 @@
 @import "../../../../variables.scss";
 
 .calendar-container {
-  .row {
-    background: $purple-blue-light-transparent;
+  padding: 20px;
+  background: $purple-blue-light-transparent;
+  color: $purple-blue;
 
-    .mat-form-field {
-      width: 100%;
+  h2 {
+    text-align: center;
+  }
+
+  .mat-form-field {
+    width: 100%;
+  }
+
+  #calendar-grid {
+    border-bottom: 1px solid $purple-blue-light;
+    border-left: 1px solid $purple-blue-light;
+
+    .mat-grid-tile {
+      background: $purple-blue-light-transparent;
+      border-top: 1px solid $purple-blue-light;
+      border-right: 1px solid $purple-blue-light;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: 2px;
+
+      /deep/ .mat-figure {
+        justify-content: space-around !important;
+      }
+
+      .icon-add {
+        align-self: flex-end;
+        color: $correct;
+      }
+
+      .icon-view {
+        align-self: flex-end;
+        color: $purple-blue;
+      }
+
+      .calendar-link {
+        display: flex;
+        padding: 0;
+        align-self: flex-end;
+      }
     }
   }
 }

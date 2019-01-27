@@ -63,7 +63,6 @@ export class LoginModalComponent {
   handleResponse(data) {
     this.tokenService.storeToken(data.access_token);   // store the token
     this.authService.changeAuthStatus(true);
-    this.router.navigateByUrl('/calendar');             // go to calendar page
 
   }
 

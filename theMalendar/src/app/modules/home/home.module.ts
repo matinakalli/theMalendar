@@ -8,13 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material/material.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AddEventModalComponent } from './calendar/add-event-modal/add-event-modal.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     LoginModalComponent,
     RegisterModalComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddEventModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,13 +26,15 @@ import { MaterialModule } from '../material/material.module';
     NgbModule,
     MaterialModule,
     ReactiveFormsModule,
+    AngularFontAwesomeModule
   ],
   exports: [
     HomeComponent,
   ],
   entryComponents: [
     LoginModalComponent,
-    RegisterModalComponent
+    RegisterModalComponent,
+    AddEventModalComponent
   ],
 })
 export class HomeModule { }

@@ -1,23 +1,45 @@
 <div class="calendar-container">
-    <form #ChooseMonthForm="ngForm" (ngSubmit)="onChoseMonth()">
-      <div class="row">
-        <div class="col-md-3">
-          <mat-form-field>
-            <mat-select placeholder="Select Month" [(ngModel)] = "chosenMonth" name="chosenMonth">
-              <mat-option *ngFor="let month of months" [value]="month">
-                {{ month }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <div class="form-group col-md-12">
-            <button type="submit" class="btn btn-submit">See Events</button>
-          </div>
+  <form #ChooseMonthForm="ngForm" (ngSubmit)="onChoseMonth()">
+    <div class="row">
+      <div class="col-md-3">
+        <mat-form-field>
+          <mat-select
+            placeholder="Select Month"
+            [(ngModel)]="chosenMonth"
+            name="chosenMonth"
+          >
+            <mat-option *ngFor="let month of months" [value]="month">
+              {{ month }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-group col-md-12">
+          <button type="submit" class="btn btn-submit">See Events</button>
         </div>
-        <div class="col-md-9" *ngIf = "days">
-            <div *ngFor="let day of days">
-              <p>{{ day }}</p>
-            </div>
-          </div>
       </div>
-    </form>
-  </div>
+      <div class="col-md-9" *ngIf="dates">
+        <h2>{{ chosenMonth }}</h2>
+        <!-- Malendar's Week Days -->
+        <mat-grid-list cols="7" rowHeight="2:1">
+          <mat-grid-tile *ngFor="let weekDay of weekDays">{{weekDay}}</mat-grid-tile>
+        </mat-grid-list>
+
+        <!-- Malendar's dates -->
+        <mat-grid-list cols="7" rowHeight="2:1" id="calendar-grid">
+          <!-- Malendar's empty cells -->
+          <ng-container *ngIf="emptyCells !=0">
+            <mat-grid-tile  *ngFor="let emptyCell of emptyCells"></mat-grid-tile>
+          </ng-container>
+          <mat-grid-tile  *ngFor="let date of dates">
+            <a class="calendar-link" href="javascript:void(0)" (click)="addEventModal(date)">
+              <fa name="plus" class="icon-add"></fa>
+            </a>
+              <span>{{ date | date:'d' }}</span>
+            <!-- <fa *ngIf="getDateEvents(date) === 0" name="eye-slash" class="icon-view"></fa> -->
+            <!-- <fa *ngIf="getDateEvents(date) != 0" name="eye" class="icon-view"></fa> -->
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </form>
+</div>

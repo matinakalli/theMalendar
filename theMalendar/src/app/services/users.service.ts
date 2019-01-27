@@ -17,4 +17,8 @@ export class UsersService {
   register(user) {
     return this.http.post(`${this.globals.API_URL}/register`, user);
   }
+
+  getUser() {
+    return this.http.get(`${this.globals.API_URL}/get-user`);
+  }
 }

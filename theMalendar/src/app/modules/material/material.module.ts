@@ -10,7 +10,8 @@ import {
   MatInputModule,
   MatSnackBarModule,
   MatSelectModule,
-  MatOptionModule
+  MatOptionModule,
+  MatGridListModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     MatInputModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatGridListModule,
   ],
   exports: [
     MatButtonModule,
@@ -36,7 +38,8 @@ import {
     MatInputModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatOptionModule
+    MatOptionModule,
+    MatGridListModule,
   ],
   providers: [
     MatDialogModule
