@@ -1,5 +1,5 @@
 <h1>Register</h1>
-<form #RForm="ngForm" (ngSubmit)="onRegister()">
+<form #RForm="ngForm">
   <div mat-dialog-content>
     <div class="alert alert-danger" [hidden]="!error.email">
       {{ error["email"] }}
@@ -75,6 +75,7 @@
       type="submit"
       class="btn-submit"
       [disabled]="!RForm.valid"
+      (click)="onRegister()"
     >
       Submit
     </button>

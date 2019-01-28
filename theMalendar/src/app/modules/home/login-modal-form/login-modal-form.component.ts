@@ -1,6 +1,5 @@
 import { AuthService } from './../../../services/auth.service';
 import {Component} from '@angular/core';
-import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -17,23 +16,20 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'app-login-modal',
-  templateUrl: './login-modal.component.html',
-  styleUrls: ['./login-modal.component.scss'],
-  providers: [
-    { provide: MatDialogRef, useValue: {} }
-  ]
+  selector: 'app-login-modal-form',
+  templateUrl: './login-modal-form.component.html',
+  styleUrls: ['./login-modal-form.component.scss']
 })
-export class LoginModalComponent {
+export class LoginModalFormComponent {
   public loginForm = {
     email: null,
     password: null
   };
   public error = null;
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginModalComponent>,
+  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<LoginModalFormComponent>,
     public messageBar: MatSnackBar, private usersService: UsersService,
-    private tokenService: TokenService, private router: Router,
+    private tokenService: TokenService,
     private authService: AuthService) {}
 
   public emailFormControl = new FormControl('', [
@@ -58,7 +54,7 @@ export class LoginModalComponent {
       error => this.handleError(error)
     );
 
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
   // Handle the data of the response when successfull
@@ -66,6 +62,7 @@ export class LoginModalComponent {
     this.tokenService.storeToken(data.access_token);   // store the token
     this.authService.changeAuthStatus(true);
 
+    this.dialogRef.close();
   }
 
   // Save the response error and print it to the interface

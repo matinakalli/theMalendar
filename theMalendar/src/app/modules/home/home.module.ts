@@ -1,7 +1,6 @@
 import { CalendarComponent } from './calendar/calendar.component';
 import { SharedModule } from './../shared/shared.module';
 import { RegisterModalComponent } from './register-modal/register-modal.component';
-import { LoginModalComponent } from './login-modal/login-modal.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
@@ -12,16 +11,17 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AddEventModalComponent } from './calendar/add-event-modal/add-event-modal.component';
 import { UpdateEventModalComponent } from './calendar/update-event-modal/update-event-modal.component';
 import { ConfirmDeleteModalComponent } from './calendar/confirm-delete-modal/confirm-delete-modal.component';
+import { LoginModalFormComponent } from './login-modal-form/login-modal-form.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    LoginModalComponent,
     RegisterModalComponent,
     CalendarComponent,
     AddEventModalComponent,
     UpdateEventModalComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    LoginModalFormComponent
   ],
   imports: [
     CommonModule,
@@ -36,11 +36,11 @@ import { ConfirmDeleteModalComponent } from './calendar/confirm-delete-modal/con
     HomeComponent,
   ],
   entryComponents: [
-    LoginModalComponent,
     RegisterModalComponent,
     AddEventModalComponent,
     UpdateEventModalComponent,
-    ConfirmDeleteModalComponent
+    ConfirmDeleteModalComponent,
+    LoginModalFormComponent
   ],
 })
 export class HomeModule { }

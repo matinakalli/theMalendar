@@ -1,9 +1,9 @@
+import { LoginModalFormComponent } from './../../home/login-modal-form/login-modal-form.component';
 import { TokenService } from './../../../services/token.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MatDialogModule } from '@angular/material';
-import { LoginModalComponent } from '../../home/login-modal/login-modal.component';
 import { RegisterModalComponent } from '../../home/register-modal/register-modal.component';
 
 @Component({
@@ -19,7 +19,7 @@ export class MenuComponent implements OnInit {
     private router: Router, private tokenService: TokenService) {}
 
   loginModal(): void {
-    const dialogRef = this.dialog.open(LoginModalComponent, {
+    const dialogRef = this.dialog.open(LoginModalFormComponent, {
       width: '350px',
     });
 
