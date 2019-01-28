@@ -43,7 +43,6 @@ export class CalendarComponent implements OnInit {
   public displayedColumns: string[] = [
     'title',
     'place',
-    'attendees',
     'description',
     'time',
     'actions'
@@ -119,7 +118,7 @@ export class CalendarComponent implements OnInit {
     // change the month of the calendar view
     this.changedChosenMonth = this.chosenMonth;
 
-    // re initialize availableEvents array
+    // re-initialize availableEvents array
     this.availableEvents = [];
 
     // find if there are events in every day

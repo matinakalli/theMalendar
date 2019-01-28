@@ -49,8 +49,6 @@
             <span class="title-date">{{chosenDay | date: 'EEEE dd/MM/y'}}</span>
           </h3>
           <form #DayScheduleForm="ngForm">
-
-              <div class="row">
                 <mat-form-field>
                   <input
                     matInput
@@ -64,13 +62,6 @@
                     <th mat-header-cell *matHeaderCellDef>Title</th>
                     <td mat-cell *matCellDef="let dayEvent">
                       {{ dayEvent.title }}
-                    </td>
-                  </ng-container>
-
-                  <ng-container matColumnDef="attendees">
-                    <th mat-header-cell *matHeaderCellDef>Attendees</th>
-                    <td mat-cell *matCellDef="let dayEvent">
-                      {{ dayEvent.attendees }}
                     </td>
                   </ng-container>
 
@@ -110,11 +101,7 @@
                   [pageSizeOptions]="[5, 10, 20]"
                   showFirstLastButtons
                 ></mat-paginator>
-              </div>
-            <!-- </div> -->
           </form>
-
-
       </div>
     </div>
   </form>

@@ -13,15 +13,15 @@
     width: 100%;
   }
 
-  #calendar-grid {
-    border-bottom: 1px solid $purple-blue-light;
-    border-left: 1px solid $purple-blue-light;
+  .col-md-5, .col-md-7 {
+    padding: 10px 0;
+  }
 
+  #calendar-grid {
     .mat-grid-tile {
       background: $purple-blue-light-transparent;
-      border-top: 1px solid $purple-blue-light;
       border-right: 1px solid $purple-blue-light;
-      font-size: 19px;
+      font-size: 15px;
       font-weight: 600;
       letter-spacing: 2px;
 
@@ -32,6 +32,7 @@
       .icon-add {
         align-self: flex-end;
         color: $correct;
+        font-size: 15px;
       }
 
       a {
