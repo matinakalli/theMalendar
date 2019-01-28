@@ -45,14 +45,16 @@
 
 // Mobile css
 
-@media all and (max-width: 992px){
+// .navbar-expand-lg .navbar-nav .nav-link {
+//   padding-right: 0.5rem;
+//   padding-left: 0.5rem;
+// }
 
-  .navbar-expand-lg {
-    background-color: $purple-blue-transparent;
-  }
+.navbar-nav {
+  flex-direction: initial !important;
 
-  .material-icons{
-    color: $light-grey;
-  }
+  .nav-link {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
 }
-
