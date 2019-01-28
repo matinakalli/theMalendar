@@ -14,6 +14,10 @@ Route::group([
 
     // Events routes
     Route::post('create-event', 'EventController@create');
-    Route::get('date-events/{date}', 'EventController@getDateEvents');
+    Route::get('count-date-events/{date}', 'EventController@countDateEvents');
+    Route::get('get-date-events/{date}', 'EventController@getDateEvents');
+    Route::get('event/{id}', 'EventController@getEvent');
+    Route::put('event/{id}', 'EventController@updateEvent');
+    Route::delete('event/{id}', 'EventController@deleteEvent');
 
 });

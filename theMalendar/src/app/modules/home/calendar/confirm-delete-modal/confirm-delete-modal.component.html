@@ -1,0 +1,16 @@
+<h6>
+  Please confirm that you want to delete the event '<b>{{ data.title }}</b>' with with date: <br />
+  <b> {{ data.date | date:'d/MM/y'}}</b>
+</h6>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" class="btn-close">Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="data.id"
+    cdkFocusInitial
+    class="btn-spark"
+    (click)="confirmReject()"
+  >
+    Confirm
+  </button>
+</div>

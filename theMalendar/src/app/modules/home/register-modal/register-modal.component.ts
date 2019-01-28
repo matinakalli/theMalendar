@@ -35,7 +35,7 @@ export class RegisterModalComponent {
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<RegisterModalComponent>,
     private usersService: UsersService, public messageBar: MatSnackBar,
-    private tokenService: TokenService, private router: Router,
+    private tokenService: TokenService,
     private authService: AuthService) {}
 
   public emailFormControl = new FormControl('', [

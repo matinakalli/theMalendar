@@ -1,7 +1,7 @@
 <div class="calendar-container">
   <form #ChooseMonthForm="ngForm" (ngSubmit)="onChoseMonth()">
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-5">
         <mat-form-field>
           <mat-select
             placeholder="Select Month"
@@ -16,9 +16,8 @@
         <div class="form-group col-md-12">
           <button type="submit" class="btn btn-submit">See Events</button>
         </div>
-      </div>
-      <div class="col-md-9" *ngIf="dates">
-        <h2>{{ chosenMonth }}</h2>
+        <br>
+        <h3>{{ changedChosenMonth }}</h3>
         <!-- Malendar's Week Days -->
         <mat-grid-list cols="7" rowHeight="2:1">
           <mat-grid-tile *ngFor="let weekDay of weekDays">{{weekDay}}</mat-grid-tile>
@@ -30,15 +29,92 @@
           <ng-container *ngIf="emptyCells !=0">
             <mat-grid-tile  *ngFor="let emptyCell of emptyCells"></mat-grid-tile>
           </ng-container>
-          <mat-grid-tile  *ngFor="let date of dates">
+          <mat-grid-tile  *ngFor="let date of dates; let i = index">
             <a class="calendar-link" href="javascript:void(0)" (click)="addEventModal(date)">
               <fa name="plus" class="icon-add"></fa>
             </a>
               <span>{{ date | date:'d' }}</span>
-            <!-- <fa *ngIf="getDateEvents(date) === 0" name="eye-slash" class="icon-view"></fa> -->
-            <!-- <fa *ngIf="getDateEvents(date) != 0" name="eye" class="icon-view"></fa> -->
+              <!-- <ng-container  *ngIf="availableEvents[i] === 0 || availableEvents[i] === null">
+                <fa name="eye-slash" class="icon-no-view"></fa>
+              </ng-container> -->
+              <ng-container *ngIf="availableEvents[i] === 1">
+                <a href="javascript:void(0)"><fa name="eye" class="icon-view" (click)="viewDayScheduleModal(date)"></fa></a>
+              </ng-container>
           </mat-grid-tile>
         </mat-grid-list>
+      </div>
+      <div class="col-md-7" *ngIf="chosenDay !== null">
+
+          <h3>Events of: <br>
+            <span class="title-date">{{chosenDay | date: 'EEEE dd/MM/y'}}</span>
+          </h3>
+          <form #DayScheduleForm="ngForm">
+
+              <div class="row">
+                <mat-form-field>
+                  <input
+                    matInput
+                    (keyup)="applyFilter($event.target.value)"
+                    placeholder="Filter"
+                  />
+                </mat-form-field>
+
+                <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+                  <ng-container matColumnDef="title">
+                    <th mat-header-cell *matHeaderCellDef>Title</th>
+                    <td mat-cell *matCellDef="let dayEvent">
+                      {{ dayEvent.title }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="attendees">
+                    <th mat-header-cell *matHeaderCellDef>Attendees</th>
+                    <td mat-cell *matCellDef="let dayEvent">
+                      {{ dayEvent.attendees }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="place">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Place</th>
+                    <td mat-cell *matCellDef="let dayEvent">
+                      {{ dayEvent.place }}
+                    </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+                    <td mat-cell *matCellDef="let dayEvent">{{ dayEvent.description }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef>Time</th>
+                    <td mat-cell *matCellDef="let dayEvent">{{ dayEvent.time }}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef>Actions</th>
+                    <td mat-cell *matCellDef="let dayEvent; let i = index;">
+                      <a class="icon-edit" href="javascript:void(0)" (click)="editEvent(dayEvent.id, chosenDay, i)" title="Edit Event">
+                        <i class="fa fa-edit fa-lg"></i>
+                      </a>
+                      <a class="icon-delete" href="javascript:void(0)" (click)="deleteEvent(dayEvent.id, chosenDay, dayEvent.title, i)" title="Delete Event">
+                        <i class="fa fa-times fa-lg"></i>
+                      </a>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+                <mat-paginator
+                  [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                ></mat-paginator>
+              </div>
+            <!-- </div> -->
+          </form>
+
+
       </div>
     </div>
   </form>

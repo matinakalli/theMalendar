@@ -5,7 +5,6 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import {ErrorStateMatcher} from '@angular/material/core';
 import { UsersService } from 'src/app/services/users.service';
 import { MatSnackBar } from '@angular/material';
-import { TokenService } from 'src/app/services/token.service';
 import { DatePipe } from '@angular/common';
 
 
@@ -68,7 +67,6 @@ export class AddEventModalComponent implements OnInit {
   public pipe = new DatePipe('en-US');
 
   ngOnInit() {
-    console.log(this.data);
   }
 
   onNoClick(): void {

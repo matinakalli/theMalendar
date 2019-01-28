@@ -1,0 +1,16 @@
+@import '../../../../../variables.scss';
+
+.mat-form-field {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  color: $purple-blue;
+
+  .title-date {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
+

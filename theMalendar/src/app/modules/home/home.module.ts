@@ -10,6 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material/material.module';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AddEventModalComponent } from './calendar/add-event-modal/add-event-modal.component';
+import { UpdateEventModalComponent } from './calendar/update-event-modal/update-event-modal.component';
+import { ConfirmDeleteModalComponent } from './calendar/confirm-delete-modal/confirm-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AddEventModalComponent } from './calendar/add-event-modal/add-event-mod
     LoginModalComponent,
     RegisterModalComponent,
     CalendarComponent,
-    AddEventModalComponent
+    AddEventModalComponent,
+    UpdateEventModalComponent,
+    ConfirmDeleteModalComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,9 @@ import { AddEventModalComponent } from './calendar/add-event-modal/add-event-mod
   entryComponents: [
     LoginModalComponent,
     RegisterModalComponent,
-    AddEventModalComponent
+    AddEventModalComponent,
+    UpdateEventModalComponent,
+    ConfirmDeleteModalComponent
   ],
 })
 export class HomeModule { }

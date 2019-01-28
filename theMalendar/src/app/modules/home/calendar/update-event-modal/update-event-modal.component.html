@@ -1,0 +1,96 @@
+<h3>Edit Event for: <br>
+  <span class="title-date">{{data.dateDetails | date: 'EEEE dd/MM/y'}}</span>
+</h3>
+<form #UForm="ngForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field>
+          <input
+            matInput
+            [formControl]="titleFormControl"
+            [(ngModel)]="event && event.title"
+            value="{{event && event.title}}"
+            placeholder="Title"
+            required
+          />
+          <mat-error *ngIf="titleFormControl.hasError('required')">
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field>
+          <input
+              matInput
+              [formControl]="placeFormControl"
+              [(ngModel)]="event && event.place"
+              value="{{event && event.place}}"
+              placeholder="Place"
+              required
+            />
+            <mat-error *ngIf="placeFormControl.hasError('required')">
+              Place is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+      </div>
+      <div class="col-md-12">
+          <mat-form-field>
+              <input
+                matInput
+                [formControl]="timeFormControl"
+                [(ngModel)]="event && event.time"
+                value="{{event && event.time}}"
+                placeholder="Time"
+                required
+              />
+              <mat-error *ngIf="timeFormControl.hasError('required')">
+                Time confirmation is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+      </div>
+      <div class="col-md-12">
+          <mat-form-field>
+              <textarea
+                matInput
+                [formControl]="attendeesFormControl"
+                [(ngModel)]="event && event.attendees"
+                value="{{event && event.attendees}}"
+                placeholder="Attendees"
+                [errorStateMatcher]="matcher"
+                required
+              ></textarea>
+              <mat-error *ngIf="attendeesFormControl.hasError('required')">
+                Attendees are <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field>
+          <textarea
+            matInput
+            [formControl]="descriptionFormControl"
+            [(ngModel)]="event && event.description"
+            value="{{event && event.description}}"
+            placeholder="Description"
+            required
+          ></textarea>
+          <mat-error *ngIf="descriptionFormControl.hasError('required')">
+            Description confirmation is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button class="btn-close" (click)="onNoClick()">Cancel</button>
+      <button
+        mat-button
+        type="submit"
+        class="btn-submit"
+        [disabled]="!UForm.valid"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</form>

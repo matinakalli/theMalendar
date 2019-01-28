@@ -57,6 +57,8 @@ export class LoginModalComponent {
       data => this.handleResponse(data),
       error => this.handleError(error)
     );
+
+    this.dialogRef.close();
   }
 
   // Handle the data of the response when successfull

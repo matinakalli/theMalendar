@@ -5,7 +5,7 @@
   background: $purple-blue-light-transparent;
   color: $purple-blue;
 
-  h2 {
+  h3 {
     text-align: center;
   }
 
@@ -34,6 +34,14 @@
         color: $correct;
       }
 
+      a {
+        color: $purple-blue-transparent;
+        align-self: flex-end;
+        .icon-no-view {
+          align-self: flex-end;
+        }
+      }
+
       .icon-view {
         align-self: flex-end;
         color: $purple-blue;
@@ -47,3 +55,37 @@
     }
   }
 }
+
+// datatable
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-paginator {
+  width: 100%;
+}
+
+h3 {
+  text-align: center;
+  color: $purple-blue;
+
+  .title-date {
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.icon-delete {
+  color: $wine-red;
+}
+
+.icon-edit{
+  color: $purple-blue;
+}
+
+
