@@ -73,6 +73,8 @@ export class RegisterModalComponent {
   handleResponse(data) {
     this.tokenService.storeToken(data.access_token);   // store the token
     this.authService.changeAuthStatus(true);
+
+    this.dialogRef.close();
   }
 
   handleError(error) {
