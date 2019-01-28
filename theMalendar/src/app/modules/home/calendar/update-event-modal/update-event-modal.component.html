@@ -1,7 +1,7 @@
 <h3>Edit Event for: <br>
-  <span class="title-date">{{event.title}}</span>
+  <span class="title-date">{{event && event.title}}</span>
 </h3>
-<form #UForm="ngForm" (ngSubmit)="onSubmit()">
+<form #UForm="ngForm">
   <div mat-dialog-content>
     <div class="row">
       <div class="col-md-6">
@@ -88,6 +88,7 @@
         type="submit"
         class="btn-submit"
         [disabled]="!UForm.valid"
+        (click)="onSubmit()"
       >
         Submit
       </button>

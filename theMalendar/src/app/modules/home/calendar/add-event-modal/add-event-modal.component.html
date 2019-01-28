@@ -1,7 +1,7 @@
 <h3>Add Event for: <br>
   <span class="title-date">{{data.dateDetails | date: 'EEEE dd/MM/y'}}</span>
 </h3>
-<form #EForm="ngForm" (ngSubmit)="onSubmit()">
+<form #EForm="ngForm">
   <div mat-dialog-content>
     <!-- <div class="alert alert-danger" [hidden]="!error.attendees">
       {{ error["attendees"] }}
@@ -89,6 +89,7 @@
         type="submit"
         class="btn-submit"
         [disabled]="!EForm.valid"
+        (click)="onSubmit()"
       >
         Submit
       </button>

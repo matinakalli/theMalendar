@@ -146,16 +146,8 @@ export class CalendarComponent implements OnInit {
     return numbersArray;
   }
 
-  // on click of the plus -> open add event modal
-  addEventModal(date): void {
-    const dialogRef = this.dialog.open(AddEventModalComponent, {
-      width: '550px',
-      data: { dateDetails: date }
-    });
-  }
-
   // on click of the eye -> open see day schedule modal
-  viewDayScheduleModal(date): void {
+  viewDayScheduleTable(date) {
     this.chosenDay = date;
     date = moment(date).startOf('day');
     date = this.pipe.transform(date, 'd-MM-y');
@@ -172,6 +164,56 @@ export class CalendarComponent implements OnInit {
       }
     });
   }
+
+  // on click of the plus -> open add event modal
+  addEventModal(date): void {
+    const dialogRef = this.dialog.open(AddEventModalComponent, {
+      width: '550px',
+      data: { dateDetails: date }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // view the day schedule for the added event
+      this.viewDayScheduleTable(date);
+    });
+  }
+
+  editEvent(event_id: number, date, i: number) {
+    const dialogRef = this.dialog.open(UpdateEventModalComponent, {
+      width: '500px',
+      data: {
+        event_id: event_id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // update the table with the changed event
+      this.viewDayScheduleTable(date);
+    });
+  }
+
+  deleteEvent(event_id: number, date: string, title: string, i: number): void {
+      const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
+        width: '400px',
+        data: {
+          id: event_id,
+          date: date,
+          title: title
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result != null) {
+          this.eventsService.deleteEvent(event_id).subscribe(
+            response => {console.log(response); },
+            error => {
+              this.handleError(error, i);
+            }
+          );
+        }
+      });
+  }
+
 
   // fill the datatable
   fillDatatable(date) {
@@ -197,53 +239,6 @@ export class CalendarComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
     });
-  }
-
-  editEvent(event_id: number, date, i: number) {
-    const dialogRef = this.dialog.open(UpdateEventModalComponent, {
-      width: '500px',
-      data: {
-        event_id: event_id
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result != null) {
-        this.eventsService.updateEvent(event).subscribe(
-          response => {console.log(response); },
-          error => {
-            this.handleError(error, i);
-          }
-        );
-
-        // refresh datatable
-        date = moment(date).startOf('day');
-        date = this.pipe.transform(date, 'd-MM-y');
-        this.fillDatatable(date);
-      }
-    });
-  }
-
-  deleteEvent(event_id: number, date: string, title: string, i: number): void {
-      const dialogRef = this.dialog.open(ConfirmDeleteModalComponent, {
-        width: '400px',
-        data: {
-          id: event_id,
-          date: date,
-          title: title
-        }
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        if (result != null) {
-          this.eventsService.deleteEvent(event_id).subscribe(
-            response => {console.log(response); },
-            error => {
-              this.handleError(error, i);
-            }
-          );
-        }
-      });
   }
 
   // handle errors in pending invitations acceptance or rejection

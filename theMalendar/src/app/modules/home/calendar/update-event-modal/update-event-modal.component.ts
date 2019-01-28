@@ -77,6 +77,7 @@ export class UpdateEventModalComponent implements OnInit {
       .subscribe(
         data => {
           console.log('Updated event successfully', data);
+          return(data);
         },
         error => {
           this.handleError(error.status);

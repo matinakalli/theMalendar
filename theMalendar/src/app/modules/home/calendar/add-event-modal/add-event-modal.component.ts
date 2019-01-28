@@ -34,7 +34,10 @@ export class AddEventModalComponent implements OnInit {
     time: null,
     user_id: null
   };
-  public error = [];
+
+  // take the response message and assign the class
+  public message$ = null;
+  public messageClass$ = null;
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<AddEventModalComponent>,
     private usersService: UsersService, public messageBar: MatSnackBar,
@@ -88,22 +91,39 @@ export class AddEventModalComponent implements OnInit {
           time: this.createEventForm.time,
           user_id: user_id,
         };
-        console.log(newEvent);
         this.eventsService.createEvent(newEvent)
         .subscribe(
-          response => console.log(response),
-          error => this.handleError(error)
+          response => {
+            this.handleResponse(response);
+            },
+          error => {
+            this.handleError(error.status);
+          }
         );
       });
+
   }
 
   // Handle the data of the response when successfull
   handleResponse(response) {
-    console.log(response);
+    this.dialogRef.close();
   }
 
-  handleError(error) {
-    this.error = error.error.errors;
+  // handle errors in pending invitations acceptance or rejection
+  handleError(status) {
+    if (status === 201) {
+      this.message$ = 'Success: The event was successfully created.';
+      this.messageClass$ = 'alert-success';
+    } else {
+      this.message$ = 'Error: The event was not created.';
+      this.messageClass$ = 'alert-error';
+    }
+
+    this.messageBar.open(this.message$, '', {
+      duration: 4000,
+      panelClass: [this.messageClass$]
+    });
+    this.dialogRef.close();
   }
 
 
