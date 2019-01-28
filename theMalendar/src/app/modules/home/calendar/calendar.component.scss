@@ -13,8 +13,11 @@
     width: 100%;
   }
 
-  .col-md-5, .col-md-7 {
-    padding: 10px 0;
+  // remove paddings from columns in smaller screen
+  @media all and (max-width: 892px){
+    .col-md-5, .col-md-7 {
+      padding: 10px 0;
+    }
   }
 
   #calendar-grid {
