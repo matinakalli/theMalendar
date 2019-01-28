@@ -1,5 +1,5 @@
 # theMalendar
-Matina's Magestic Calendar 
+Matina's Majestic Calendar 
 
 See the Documentation here https://goo.gl/wTJbAc
 
